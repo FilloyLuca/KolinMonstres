@@ -1,6 +1,7 @@
 package org.example
 
 import org.example.dresseur.Entraineur
+import org.example.monde.Zone
 import org.example.monstre.EspeceMonstre
 
 fun changeCouleur(message: String, couleur:String=""): String {
@@ -42,7 +43,6 @@ var especeX = EspeceMonstre(
     "Sa feuille sur la tête indique son humeur.",
     "Curieux, amical, timide"
 )
-
 var especeY = EspeceMonstre(
     4,
     "Flamkip",
@@ -63,7 +63,6 @@ var especeY = EspeceMonstre(
     "Sa flamme change d’intensité selon son énergie.",
     "Impulsif, joueur, loyal"
 )
-
 var especeZ = EspeceMonstre(
     7,
     "Aquamy",
@@ -85,6 +84,19 @@ var especeZ = EspeceMonstre(
     "Calme, rêveur, mystérieux"
 )
 
+var route1 = Zone(
+    1,
+    "Route 1",
+    1500,
+    mutableListOf(especeX)
+)
+var route2 = Zone(
+    2,
+    "Route 2",
+    2000,
+    mutableListOf(especeX,especeZ)
+)
+
 
 fun main() {
 //// Test fonctionnel
@@ -92,19 +104,22 @@ fun main() {
 //    println(changeCouleur("world","bleu"))
 //    println("hello ${changeCouleur("my","jaune")} world")
 //    println(changeCouleur("truc","marron"))
-//
+
 ////Class Entraineur
 //    joueur.afficheDetail()
 //    rival.afficheDetail()
 //    joueur.argents+=50
 //    joueur.afficheDetail()
-//
-////Class EspeceMonstre
-    println(especeX.afficheArt(true))
-    println(especeX.afficheArt(false))
-    println(especeY.afficheArt(true))
-    println(especeY.afficheArt(false))
-    println(especeZ.afficheArt(true))
-    println(especeZ.afficheArt(false))
 
+////Class EspeceMonstre
+//    println(especeX.afficheArt(true))
+//    println(especeX.afficheArt(false))
+//    println(especeY.afficheArt(true))
+//    println(especeY.afficheArt(false))
+//    println(especeZ.afficheArt(true))
+//    println(especeZ.afficheArt(false))
+
+////Class Zone
+    route1.zoneSuivante = route2
+    route2.zonePrecedente = route1
 }
