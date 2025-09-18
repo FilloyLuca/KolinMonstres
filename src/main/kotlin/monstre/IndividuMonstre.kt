@@ -23,7 +23,16 @@ class IndividuMonstre (
     var nom : String,
     var espece : EspeceMonstre,
     var entraineur : Entraineur?=null,
-    var expInit : Double
+    expInit : Double
 ){
+    var niveau : Int = 1
+    var attaque : Int = this.espece.baseAttaque + (-2..2).random()
+    var defense : Int = this.espece.baseDefense + (-2..2).random()
+    var vitesse : Int = this.espece.baseVitesse + (-2..2).random()
+    var attaqueSpe : Int = this.espece.baseAttaqueSpe + (-2..2).random()
+    var defenseSpe : Int = this.espece.baseDefenseSpe + (-2..2).random()
+    var pvMax : Int = this.espece.basePv + (-5..5).random()
+
+
 
 }
