@@ -102,19 +102,25 @@ Bibliothèques :
 
 ->Entrainneur
   Personnage contrôlé par le joueur ou un PNJ. Possède une équipe de monstres, une boîte de stockage et un sac d’objets. C’est l’équivalent d’un dresseur.
+  
   Partie
 ->Représente une session de jeu. Contient le joueur (Entrainneur), la zone actuelle et l’état global de la progression.
+
 🐾 Monstres
+
   ->EspeceMonstre
     Décrit les caractéristiques de base d’un type de monstre (comme un « modèle » ou une espèce).
     Contient ses statistiques de base, ses multiplicateurs de croissance, son nom, son type et éventuellement son art ASCII.
+    
   ->IndividuMonstre
     Instance unique d’un monstre appartenant à un joueur ou rencontré dans la nature.
     Possède un nom (qui peut être différent de son espèce), un niveau, des stats générées avec un petit facteur aléatoire, de l’expérience et des points de vie.
     Peut attaquer, monter de niveau, être renommé et afficher ses détails.
     Un monstre sauvage est un monstre qui appartient à aucun dresseur et donc un monstre que l’on peut capturer.
+    
   ->Potentiel
     Facteur multiplicatif qui influence la croissance des statistiques lors d’un level-up (ex. un monstre avec un fort potentiel devient plus puissant). Correspond aux étoiles      dans les jeux Pokémon.
+    
   ->Elément
     Chaque monstre a 1 ou 2 éléments (exemple : Eau, Feu, Plante, Insecte, Psy ...) 
     Les techniques ont aussi un élément.  
