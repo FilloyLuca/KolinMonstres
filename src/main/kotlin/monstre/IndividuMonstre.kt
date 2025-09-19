@@ -66,6 +66,8 @@ class IndividuMonstre (
      * @param niveau Niveau cible.
      * @return Expérience cumulée nécessaire pour atteindre ce niveau.
      */
-    fun palierExp(){}
+    fun palierExp(niveau: Int): Double {
+        return 100 * Math.pow((niveau - 1).toDouble(), 2.0)
+    }
 
 }
