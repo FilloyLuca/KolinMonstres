@@ -3,6 +3,7 @@ package org.example
 import org.example.dresseur.Entraineur
 import org.example.monde.Zone
 import org.example.monstre.EspeceMonstre
+import org.example.monstre.IndividuMonstre
 
 fun changeCouleur(message: String, couleur:String=""): String {
     val reset = "\u001B[0m"
@@ -23,7 +24,7 @@ fun changeCouleur(message: String, couleur:String=""): String {
 var joueur = Entraineur(1,"Sacha",100)
 var rival = Entraineur(2,"Regis",200)
 
-var especeX = EspeceMonstre(
+var especeSpringLeaf = EspeceMonstre(
     1,
     "Springleaf",
     "Graine",
@@ -43,7 +44,7 @@ var especeX = EspeceMonstre(
     "Sa feuille sur la tête indique son humeur.",
     "Curieux, amical, timide"
 )
-var especeY = EspeceMonstre(
+var especeFlamkip = EspeceMonstre(
     4,
     "Flamkip",
     "Animal ",
@@ -63,7 +64,7 @@ var especeY = EspeceMonstre(
     "Sa flamme change d’intensité selon son énergie.",
     "Impulsif, joueur, loyal"
 )
-var especeZ = EspeceMonstre(
+var especeAquamy = EspeceMonstre(
     7,
     "Aquamy",
     "Meteo",
@@ -88,13 +89,37 @@ var route1 = Zone(
     1,
     "Route 1",
     1500,
-    mutableListOf(especeX)
+    mutableListOf(especeSpringLeaf)
 )
 var route2 = Zone(
     2,
     "Route 2",
     2000,
-    mutableListOf(especeX,especeZ)
+    mutableListOf(especeSpringLeaf,especeAquamy)
+)
+
+val monstre1 = IndividuMonstre(
+    1,
+    "springleaf",
+    especeSpringLeaf,
+    null,
+    1500.0
+)
+
+val monstre2 = IndividuMonstre(
+    2,
+    "flamkip",
+    especeFlamkip,
+    null,
+    1500.0
+)
+
+val monstre3 = IndividuMonstre(
+    3,
+    "aquamy",
+    especeAquamy,
+    null,
+    1500.0
 )
 
 
@@ -112,14 +137,19 @@ fun main() {
 //    joueur.afficheDetail()
 
 ////Class EspeceMonstre
-//    println(especeX.afficheArt(true))
-//    println(especeX.afficheArt(false))
-//    println(especeY.afficheArt(true))
-//    println(especeY.afficheArt(false))
-//    println(especeZ.afficheArt(true))
-//    println(especeZ.afficheArt(false))
+//    println(especeSpringLeaf.afficheArt(true))
+//    println(especeSpringLeaf.afficheArt(false))
+//    println(especeFlamkip.afficheArt(true))
+//    println(especeFlamkip.afficheArt(false))
+//    println(especeAquamy.afficheArt(true))
+//    println(especeAquamy.afficheArt(false))
 
 ////Class Zone
-    route1.zoneSuivante = route2
-    route2.zonePrecedente = route1
+//    route1.zoneSuivante = route2
+//    route2.zonePrecedente = route1
+
+////Class IndividuMonstre
+
+
+
 }

@@ -48,6 +48,24 @@ class IndividuMonstre (
     val potentiel: Double = Random.nextInt(50, 201) / 100.0
 
     var exp: Double = 0.0
+        set(value){
+            field = value
+
+            // Vérifier si on est au niveau 1
+            val estNiveau1 = (niveau == 1)
+
+            // Boucle tant que l'expérience dépasse le palier pour monter de niveau
+            while (field >= palierExp(niveau)) {
+                levelUp()
+                // Si on est plus au niveau 1, afficher le message
+                if (!estNiveau1) {
+                    println("Le monstre $nom est maintenant niveau $niveau !")
+                }
+            }
+        }
+    init {
+        this.exp = expInit
+    }
 
     var pv: Int = pvMax
         get() = field
