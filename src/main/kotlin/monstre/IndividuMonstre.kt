@@ -29,7 +29,6 @@ import kotlin.random.Random
  * @see EspeceMonstre Pour les caractéristiques de l'espèce.
  * @see Entraineur Pour le propriétaire potentiel de ce monstre.
  */
-
 class IndividuMonstre (
     var id : Int,
     var nom : String,
@@ -70,4 +69,37 @@ class IndividuMonstre (
         return 100 * Math.pow((niveau - 1).toDouble(), 2.0)
     }
 
+    /**
+     * Augmente le niveau du monstre de 1 et met à jour ses caractéristiques.
+     *
+     * Cette fonction :
+     * - Incrémente le niveau de l'individu.
+     * - Recalcule les statistiques (attaque, défense, vitesse, attaque spéciale, défense spéciale, pvMax)
+     *   en appliquant une variation aléatoire autour des bases de l'espèce.
+     * - Augmente les points de vie actuels (`pv`) du nombre de points de vie maximum gagnés lors
+     *   de l'augmentation du niveau.
+     *
+     * Le setter de `pv` assure que la nouvelle valeur reste toujours entre 0 et `pvMax`.
+     */
+    fun levelUp(){
+        // On augmente le niveau de 1
+        niveau ++
+
+        // Sauvegarde de l'ancien pvMax pour calculer le gain de points de vie max
+        val ancienPvMax = pvMax
+
+        // Recalcul des caractéristiques avec une variation aléatoire
+        attaque += (espece.modAttaque * potentiel).toInt() + (-2..2).random()
+        defense += (espece.modDefense * potentiel).toInt() + (-2..2).random()
+        vitesse += (espece.modVitesse * potentiel).toInt() + (-2..2).random()
+        attaqueSpe += (espece.modAttaqueSpe * potentiel).toInt() + (-2..2).random()
+        defenseSpe += (espece.modDefenseSpe * potentiel).toInt() + (-2..2).random()
+        pvMax += (espece.modPv * potentiel).toInt() + (-5..5).random()
+
+        // Calcul du gain de pvMax
+        val gainPvMax = pvMax - ancienPvMax
+
+        // Augmentation des PV actuels du gain obtenu
+        pv += gainPvMax
+    }
 }
