@@ -1,11 +1,14 @@
 🎮Contexte 
+
 Description du jeu
+
 Kotlin Monsters est un jeu inspiré des jeux Pokémon (surtout les anciennes générations).
  Vous incarnez un dresseur de monstres dont les objectifs sont :
-Obtenir tous les badges d’arène.
+ 
+ -> Obtenir tous les badges d’arène.
 
 
-Capturer tous les monstres du monde.
+ -> Capturer tous les monstres du monde.
 
 
 Vous pouvez explorer différentes zones (routes, cavernes, mers, etc.), capturer des monstres, combattre dans les arènes pour obtenir des badges, et acheter des objets pour progresser dans l’aventure.
