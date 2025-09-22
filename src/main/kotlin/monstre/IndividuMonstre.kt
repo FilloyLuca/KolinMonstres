@@ -181,15 +181,14 @@ class IndividuMonstre (
     fun afficherDetail(monstre: IndividuMonstre) {
         val art = monstre.espece.afficheArt()
         val artLines = art.lines()
-        val details = listOf(
-            "Nom : ${monstre.nom}",
-            "Niveau : ${monstre.niveau}",
+        val details = listOf("=========================",
+            "Nom : ${monstre.nom}", "Niveau : ${monstre.niveau}",
             "PV : ${monstre.pv} / ${monstre.pvMax}",
-            "Attaque : ${monstre.attaque}",
-            "Défense : ${monstre.defense}",
+            "=========================",
+            "Attaque : ${monstre.attaque}", "AttSpe : ${monstre.attaqueSpe}",
+            "Défense : ${monstre.defense}", "DéfSpe : ${monstre.defenseSpe}",
             "Vitesse : ${monstre.vitesse}",
-            "Attaque Spéciale : ${monstre.attaqueSpe}",
-            "Défense Spéciale : ${monstre.defenseSpe}"
+            "========================="
         )
         val maxArtWidth = artLines.maxOfOrNull { it.length } ?: 0
         val maxLines = maxOf(artLines.size, details.size)
