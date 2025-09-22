@@ -155,6 +155,8 @@ fun main() {
 ////Test attaquer()
 monstre1.attaquer(monstre2)
 
+////Test renommer()
+monstre1.renommer(monstre1)
 
 
 }

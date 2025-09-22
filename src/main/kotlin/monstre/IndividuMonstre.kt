@@ -139,5 +139,39 @@ class IndividuMonstre (
         println("${this.nom} inflige ${pvAvant - pvApres} dégâts à ${cible.nom}")
     }
 
+    /**
+     * Demande au joueur de renommer le monstre.
+     * Si l'utilisateur entre un texte vide, le nom n'est pas modifié.
+     */
+//    fun renommer(monstre: IndividuMonstre) {
+//        println("Renommer ${monstre.nom} ?")
+//        val nouveauNom = readLine() ?: ""
+//        if (nouveauNom.isNotEmpty()) {
+//            monstre.nom = nouveauNom
+//            println("${espece.nom} a été renommé en $nouveauNom")
+//        }
+//    }
+
+    fun renommer(monstre: IndividuMonstre) {
+        println("Veux-tu renommer ${monstre.nom} ? (oui/non)")
+
+        val reponse = readLine()?.trim()?.lowercase()
+
+        if (reponse == "oui") {
+            println("Nouveau nom : ")
+            val nouveauNom = readLine()?.trim() ?: ""
+            if (nouveauNom.isNotEmpty()) {
+                monstre.nom = nouveauNom
+                println("${espece.nom} a été renommé en $nouveauNom")
+            }
+        } else if (reponse == "non") {
+        } else {
+            println("Réponse invalide, opération annulée.")
+        }
+    }
+
 
 }
+
+
+
