@@ -153,10 +153,14 @@ fun main() {
 //monstre1.levelUp()
 
 ////Test attaquer()
-monstre1.attaquer(monstre2)
-
+//monstre1.attaquer(monstre2)
+//
 ////Test renommer()
-monstre1.renommer(monstre1)
+//monstre1.renommer(monstre1)
 
+////Test afficherDetail()
+monstre1.afficherDetail(monstre1)
+monstre2.afficherDetail(monstre2)
+monstre3.afficherDetail(monstre3)
 
 }

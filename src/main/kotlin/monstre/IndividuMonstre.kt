@@ -170,6 +170,38 @@ class IndividuMonstre (
         }
     }
 
+    /**
+     * Le but de cette méthode est d’afficher les caractéristiques du monstre et son art.
+     */
+//    fun afficheDetail(monstre: IndividuMonstre){
+//        val art = espece.afficheArt(true)
+//
+//    }
+
+    fun afficherDetail(monstre: IndividuMonstre) {
+        val art = monstre.espece.afficheArt()
+        val artLines = art.lines()
+        val details = listOf(
+            "Nom : ${monstre.nom}",
+            "Niveau : ${monstre.niveau}",
+            "PV : ${monstre.pv} / ${monstre.pvMax}",
+            "Attaque : ${monstre.attaque}",
+            "Défense : ${monstre.defense}",
+            "Vitesse : ${monstre.vitesse}",
+            "Attaque Spéciale : ${monstre.attaqueSpe}",
+            "Défense Spéciale : ${monstre.defenseSpe}"
+        )
+        val maxArtWidth = artLines.maxOfOrNull { it.length } ?: 0
+        val maxLines = maxOf(artLines.size, details.size)
+        for (i in 0 until maxLines) {
+            val artLine = if (i < artLines.size) artLines[i] else ""
+            val detailLine = if (i < details.size) details[i] else ""
+            val paddedArtLine = artLine.padEnd(maxArtWidth + 4)
+            println(paddedArtLine + detailLine)
+        }
+    }
+
+
 
 }
 
