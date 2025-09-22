@@ -2,6 +2,7 @@ package org.example
 
 import org.example.dresseur.Entraineur
 import org.example.item.Badge
+import org.example.item.MonsterKube
 import org.example.monde.Zone
 import org.example.monstre.EspeceMonstre
 import org.example.monstre.IndividuMonstre
@@ -130,6 +131,8 @@ val badgePiere = Badge(1,
     championTypePierre
 )
 
+val monsterKube1 = MonsterKube(1,"Kube","Kube de monstre",0.5)
+
 
 fun main() {
 //// Test fonctionnel
@@ -170,5 +173,9 @@ fun main() {
 //monstre1.afficherDetail(monstre1)
 //monstre2.afficherDetail(monstre2)
 //monstre3.afficherDetail(monstre3)
+
+////class MonsterKube
+    println(monsterKube1.utiliser(monstre3))
+
 
 }
