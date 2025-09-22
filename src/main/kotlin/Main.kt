@@ -159,8 +159,8 @@ fun main() {
 //monstre1.renommer(monstre1)
 
 ////Test afficherDetail()
-monstre1.afficherDetail(monstre1)
-monstre2.afficherDetail(monstre2)
-monstre3.afficherDetail(monstre3)
+//monstre1.afficherDetail(monstre1)
+//monstre2.afficherDetail(monstre2)
+//monstre3.afficherDetail(monstre3)
 
 }
