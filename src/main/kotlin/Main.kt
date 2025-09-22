@@ -149,6 +149,11 @@ fun main() {
 //    route2.zonePrecedente = route1
 
 ////Class IndividuMonstre
+//// Test levelup()
+//monstre1.levelUp()
+
+////Test attaquer()
+monstre1.attaquer(monstre2)
 
 
 
