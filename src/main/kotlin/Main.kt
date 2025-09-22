@@ -1,6 +1,7 @@
 package org.example
 
 import org.example.dresseur.Entraineur
+import org.example.item.Badge
 import org.example.monde.Zone
 import org.example.monstre.EspeceMonstre
 import org.example.monstre.IndividuMonstre
@@ -23,6 +24,7 @@ fun changeCouleur(message: String, couleur:String=""): String {
 
 var joueur = Entraineur(1,"Sacha",100)
 var rival = Entraineur(2,"Regis",200)
+var championTypePierre= Entraineur(3,"Pierre",1000)
 
 var especeSpringLeaf = EspeceMonstre(
     1,
@@ -120,6 +122,12 @@ val monstre3 = IndividuMonstre(
     especeAquamy,
     null,
     1500.0
+)
+
+val badgePiere = Badge(1,
+    "Badge Roche",
+    "Badge obtenu apres avoir battu le champion de l'arène  de type roche",
+    championTypePierre
 )
 
 
