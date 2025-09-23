@@ -38,13 +38,13 @@ var especeSpringLeaf = EspeceMonstre(
     11,
     10,
     12,
-    14,
+    50,
     34.0,
     6.5,
     9.0,
     8.0,
     7.0,
-    10.0,
+    30.0,
     "Petit monstre espiègle rond comme une graine, adore le soleil.",
     "Sa feuille sur la tête indique son humeur.",
     "Curieux, amical, timide"
@@ -73,13 +73,13 @@ var especeAquamy = EspeceMonstre(
     7,
     "Aquamy",
     "Meteo",
-    55,
+    14,
     10,
     11,
     9,
     14,
     14,
-    27.0,
+    7.0,
     9.0,
     10.0,
     7.5,
@@ -195,6 +195,9 @@ val badgePiere = Badge(1,
 
 val monsterKube1 = MonsterKube(1,"Kube","Kube de monstre",0.5)
 
+var combat1 = CombatMonstre(monstre3,monstre2)
+var combat2 = CombatMonstre(monstre2,monstre1)
+var combat3 = CombatMonstre(monstre1,monstre3)
 
 fun main() {
 //// Test fonctionnel
@@ -240,5 +243,7 @@ fun main() {
 //println(monsterKube1.utiliser(monstre3))
 
 ////Class CombatMonstre
+joueur.equipeMonstre.add(monstre1)
+println(combat3.jouer())
 
 }

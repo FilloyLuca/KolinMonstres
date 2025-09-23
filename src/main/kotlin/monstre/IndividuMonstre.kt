@@ -143,15 +143,6 @@ class IndividuMonstre (
      * Demande au joueur de renommer le monstre.
      * Si l'utilisateur entre un texte vide, le nom n'est pas modifié.
      */
-//    fun renommer(monstre: IndividuMonstre) {
-//        println("Renommer ${monstre.nom} ?")
-//        val nouveauNom = readLine() ?: ""
-//        if (nouveauNom.isNotEmpty()) {
-//            monstre.nom = nouveauNom
-//            println("${espece.nom} a été renommé en $nouveauNom")
-//        }
-//    }
-
     fun renommer(monstre: IndividuMonstre) {
         println("Veux-tu renommer ${monstre.nom} ? (oui/non)")
 
@@ -173,11 +164,6 @@ class IndividuMonstre (
     /**
      * Le but de cette méthode est d’afficher les caractéristiques du monstre et son art.
      */
-//    fun afficheDetail(monstre: IndividuMonstre){
-//        val art = espece.afficheArt(true)
-//
-//    }
-
     fun afficherDetail(monstre: IndividuMonstre) {
         val art = monstre.espece.afficheArt()
         val artLines = art.lines()
@@ -199,9 +185,6 @@ class IndividuMonstre (
             println(paddedArtLine + detailLine)
         }
     }
-
-
-
 }
 
 

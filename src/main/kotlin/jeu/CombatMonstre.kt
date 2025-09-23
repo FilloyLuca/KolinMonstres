@@ -150,12 +150,13 @@ class CombatMonstre (
      * - La barre de vie (PV) du monstre du joueur, sous forme de ratio PV actuel / PV max.
      */
     fun afficheCombat(){
-        println("==================== Début round : $round ====================")
-        println("Niveau : ${monstreSauvage.niveau}")
-        println("PV : ${monstreSauvage.pv / monstreSauvage.pvMax}")
+        println("==================== Début round $round ====================")
+        println("${monstreSauvage.nom} Nv:${monstreSauvage.niveau}")
+        println("PV:${monstreSauvage.pv} / ${monstreSauvage.pvMax}")
         println(monstreSauvage.espece.afficheArt(true))
         println(monstreJoueur.espece.afficheArt(false))
-        println("PV : ${monstreJoueur.pv / monstreJoueur.pvMax}")
+        println("${monstreJoueur.nom} Nv:${monstreJoueur.niveau}")
+        println("PV:${monstreJoueur.pv} / ${monstreJoueur.pvMax}")
     }
 
     /**
@@ -169,25 +170,22 @@ class CombatMonstre (
      *
      * @return Boolean `false` si le combat est terminé (victoire, défaite ou capture), sinon `true` pour continuer.
      */
-    fun jouer(): Boolean {
-        val joueurPlusRapide = monstreJoueur.vitesse >= monstreSauvage.vitesse
-        afficheCombat()
-        return if (joueurPlusRapide) {
-            val continuer = actionJoueur()
-            if (!continuer) {
-                false
-            } else {
-                actionAdverse()
-                true
+    fun jouer() : Unit{
+        var continuer : Boolean
+        if (monstreJoueur.vitesse >= monstreSauvage.vitesse) {
+            afficheCombat()
+            continuer = this.actionJoueur()
+            if (continuer == false) return
+            this.actionAdverse()
+        }
+        else {
+            this.actionAdverse()
+            afficheCombat()
+            if (gameOver() == false) {
+                continuer = this.actionJoueur()
+                if (continuer == false) continuer = actionJoueur()
             }
-        } else {
-            actionAdverse()
-            if (gameOver()) {
-                false
-            } else {
-                val continuer = actionJoueur()
-                !continuer.not()  // équivaut à: if (!continuer) false else true
-            }
+            else return
         }
     }
 
@@ -200,7 +198,7 @@ class CombatMonstre (
     fun lanceCombat() {
         while (!gameOver() && !joueurGagne()) {
             this.jouer()
-            println("==================== Fin du Round : $round ====================")
+            println("==================== Fin du Round $round ====================")
             round++
         }
         if (gameOver()) {
