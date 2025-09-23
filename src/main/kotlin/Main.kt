@@ -6,6 +6,7 @@ import org.example.item.MonsterKube
 import org.example.monde.Zone
 import org.example.monstre.EspeceMonstre
 import org.example.monstre.IndividuMonstre
+import kotlin.math.E
 
 fun changeCouleur(message: String, couleur:String=""): String {
     val reset = "\u001B[0m"
@@ -86,6 +87,66 @@ var especeAquamy = EspeceMonstre(
     "Créature vaporeuse semblable à un nuage, produit des gouttes pures.",
     "Fait baisser la température en s’endormant.",
     "Calme, rêveur, mystérieux"
+)
+var especeLaoumi = EspeceMonstre(
+    8,
+    "Laoumi",
+    "Animal",
+    11,
+    10,
+    9,
+    8,
+    11,
+    23,
+    11.0,
+    8.0,
+    7.0,
+    6.0,
+    11.5,
+    23.0,
+    "Petit ourson au pelage soyeux, aime se tenir debout.",
+    "Son grognement est mignon mais il protège ses amis.",
+    "Affectueux, protecteur, gourmand"
+)
+var especeBugsyface = EspeceMonstre(
+    10,
+    "Bugsyface",
+    "Insecte",
+    10,
+    13,
+    8,
+    7,
+    13,
+    45,
+    7.0,
+    11.0,
+    6.5,
+    8.0,
+    11.5,
+    21.0,
+    "Insecte à carapace luisante, se déplace par bonds et vibre des antennes.",
+    "Sa carapace devient plus dure après chaque mue.",
+    "Travailleur, sociable, infatigable"
+)
+var especeGalum = EspeceMonstre(
+    13,
+    "Galum",
+    "Minéral",
+    12,
+    15,
+    6,
+    8,
+    12,
+    55,
+    9.0,
+    13.0,
+    4.0,
+    6.5,
+    10.5,
+    13.0,
+    "Golem ancien de pierre, yeux lumineux en garde.",
+    "Peut rester immobile des heures comme une statue.",
+    "Sérieux, stoïque, fiable"
 )
 
 var route1 = Zone(
@@ -175,7 +236,7 @@ fun main() {
 //monstre3.afficherDetail(monstre3)
 
 ////class MonsterKube
-    println(monsterKube1.utiliser(monstre3))
+//println(monsterKube1.utiliser(monstre3))
 
 
 }
