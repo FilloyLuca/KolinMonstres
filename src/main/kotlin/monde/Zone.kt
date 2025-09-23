@@ -25,8 +25,10 @@ class Zone(
     var especeMonstres : MutableList<EspeceMonstre> = mutableListOf(),
     var zoneSuivante : Zone? = null,
     var zonePrecedente : Zone? = null
-    //TODO faire la méthode genereMonstre()
-    //TODO faire la méthode rencontreMonstre()
 ) {
+    fun genereMonstre(){
+
+    }
+    //TODO faire la méthode rencontreMonstre()
 
 }
