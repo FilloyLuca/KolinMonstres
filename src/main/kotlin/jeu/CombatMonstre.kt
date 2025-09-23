@@ -124,10 +124,11 @@ class CombatMonstre (
                     } else{
                         val choixMonstre = joueur.equipeMonstre[indexChoix]
                         if (choixMonstre.pv <= 0) {
-                            println("Impossible ! Ce monstre est KO")
+//                            println("Impossible ! Ce monstre est KO")
+                            println("Impossible ! ${choixMonstre.nom} est KO")
                             choixValide = false
                         } else {
-                            println("${choixMonstre} remplace ${monstreJoueur}")
+                            println("${choixMonstre} remplace ${monstreJoueur.nom}")
                             monstreJoueur = choixMonstre
                         }
                     }
@@ -136,4 +137,30 @@ class CombatMonstre (
         } while (!choixValide)
         return true
     }
+
+    /**
+     * Affiche les informations du combat en cours à chaque round.
+     *
+     * Affiche notamment :
+     * - Le numéro du round actuel.
+     * - Le niveau du monstre sauvage.
+     * - La barre de vie (PV) du monstre sauvage, sous forme de ratio PV actuel / PV max.
+     * - L'art ASCII (ou représentation graphique) du monstre sauvage (version "true").
+     * - L'art ASCII du monstre du joueur (version "false").
+     * - La barre de vie (PV) du monstre du joueur, sous forme de ratio PV actuel / PV max.
+     */
+    fun afficheCombat(){
+        println("====================Début round : $round\"====================")
+        println("Niveau : ${monstreSauvage.niveau}")
+        println("PV : ${monstreSauvage.pv / monstreSauvage.pvMax}")
+        println(monstreSauvage.espece.afficheArt(true))
+        println(monstreJoueur.espece.afficheArt(false))
+        println("PV : ${monstreJoueur.pv / monstreJoueur.pvMax}")
+    }
+
+
+
+
+
+
 }
