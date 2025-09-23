@@ -150,7 +150,7 @@ class CombatMonstre (
      * - La barre de vie (PV) du monstre du joueur, sous forme de ratio PV actuel / PV max.
      */
     fun afficheCombat(){
-        println("====================Début round : $round\"====================")
+        println("==================== Début round : $round ====================")
         println("Niveau : ${monstreSauvage.niveau}")
         println("PV : ${monstreSauvage.pv / monstreSauvage.pvMax}")
         println(monstreSauvage.espece.afficheArt(true))
@@ -158,9 +158,54 @@ class CombatMonstre (
         println("PV : ${monstreJoueur.pv / monstreJoueur.pvMax}")
     }
 
+    /**
+     * Gère le déroulement d'un tour de combat entre le monstre du joueur et le monstre sauvage.
+     *
+     * La vitesse des monstres détermine qui agit en premier :
+     * - Si le monstre du joueur est plus rapide ou aussi rapide, il agit en premier.
+     * - Sinon, le monstre sauvage agit en premier.
+     *
+     * Le combat affiche l'état actuel avant les actions.
+     *
+     * @return Boolean `false` si le combat est terminé (victoire, défaite ou capture), sinon `true` pour continuer.
+     */
+    fun jouer(): Boolean {
+        val joueurPlusRapide = monstreJoueur.vitesse >= monstreSauvage.vitesse
+        afficheCombat()
+        return if (joueurPlusRapide) {
+            val continuer = actionJoueur()
+            if (!continuer) {
+                false
+            } else {
+                actionAdverse()
+                true
+            }
+        } else {
+            actionAdverse()
+            if (gameOver()) {
+                false
+            } else {
+                val continuer = actionJoueur()
+                !continuer.not()  // équivaut à: if (!continuer) false else true
+            }
+        }
+    }
 
-
-
-
-
+    /**
+     * Lance le combat et gère les rounds jusqu'à la victoire ou la défaite.
+     *
+     * Affiche un message de fin si le joueur perd et restaure les PV
+     * de tous ses monstres.
+     */
+    fun lanceCombat() {
+        while (!gameOver() && !joueurGagne()) {
+            this.jouer()
+            println("==================== Fin du Round : $round ====================")
+            round++
+        }
+        if (gameOver()) {
+            joueur.equipeMonstre.forEach { it.pv = it.pvMax }
+            println("Game Over !")
+        }
+    }
 }
