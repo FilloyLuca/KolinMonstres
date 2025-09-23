@@ -3,6 +3,7 @@ package org.example
 import org.example.dresseur.Entraineur
 import org.example.item.Badge
 import org.example.item.MonsterKube
+import org.example.jeu.CombatMonstre
 import org.example.monde.Zone
 import org.example.monstre.EspeceMonstre
 import org.example.monstre.IndividuMonstre
@@ -238,5 +239,6 @@ fun main() {
 ////class MonsterKube
 //println(monsterKube1.utiliser(monstre3))
 
+////Class CombatMonstre
 
 }
