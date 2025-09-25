@@ -275,4 +275,8 @@ fun main() {
 ////Class Partie
 //val partie = Partie(1,joueur,route1)
 Partie(1, joueur, route1).choisirStarter()
+joueur.equipeMonstre.add(monstre5)
+joueur.equipeMonstre.add(monstre6)
+Partie(1,joueur,route1).modifierOrdreEquipe()
+
 }

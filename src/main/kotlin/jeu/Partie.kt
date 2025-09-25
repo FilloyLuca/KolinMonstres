@@ -59,7 +59,57 @@ class Partie(
             }
         }
     }
+    /**
+     * Permet au joueur de modifier l'ordre des monstres dans son équipe en échangeant
+     * les positions de deux monstres choisis.
+     *
+     * Fonctionne uniquement si l'équipe contient au moins 2 monstres.
+     * Affiche la liste actuelle des monstres, demande à l'utilisateur deux positions valides,
+     * puis échange les monstres à ces positions.
+     */
+    fun modifierOrdreEquipe() {
+        val equipe = joueur.equipeMonstre
 
+        // 1) Vérification: au moins 2 monstres
+        if (equipe.size < 2) {
+            println("Impossible de modifier l'ordre : l'équipe doit contenir au moins 2 monstres.")
+            return
+        }
 
+        // 2) Affichage de l'équipe (index 1..n)
+        println("Équipe actuelle :")
+        equipe.forEachIndexed { index, m ->
+            println("${index + 1}. ${m.nom} (PV ${m.pv}/${m.pvMax})")
+        }
+
+        // 3) Saisie sécurisée d'une position dans [1..size]
+        fun lirePosition(message: String): Int {
+            while (true) {
+                print(message)
+                val pos = readLine()?.trim()?.toIntOrNull()
+                if (pos != null && pos in 1..equipe.size) return pos - 1 // 0-based
+                println("Entrée invalide. Saisissez un nombre entre 1 et ${equipe.size}.")
+            }
+        }
+
+        val fromIndex = lirePosition("Position du monstre à déplacer : ")
+        val toIndex = lirePosition("Nouvelle position : ")
+
+        if (fromIndex == toIndex) {
+            println("La position est identique, aucun changement effectué.")
+            return
+        }
+
+        // 4) Échange manuel (sans java.util.*)
+        val tmp = equipe[fromIndex]
+        equipe[fromIndex] = equipe[toIndex]
+        equipe[toIndex] = tmp
+
+        // 5) Afficher le nouvel ordre
+        println("Nouvel ordre de l'équipe :")
+        equipe.forEachIndexed { index, m ->
+            println("${index + 1}. ${m.nom} (PV ${m.pv}/${m.pvMax})")
+        }
+    }
 
 }
