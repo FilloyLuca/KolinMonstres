@@ -4,6 +4,7 @@ import org.example.dresseur.Entraineur
 import org.example.item.Badge
 import org.example.item.MonsterKube
 import org.example.jeu.CombatMonstre
+import org.example.jeu.Partie
 import org.example.monde.Zone
 import org.example.monstre.EspeceMonstre
 import org.example.monstre.IndividuMonstre
@@ -269,5 +270,9 @@ fun main() {
 //println(combat3.jouer())
 
 ////class Zone
-route1.genereMonstre()
+//route1.genereMonstre()
+
+////Class Partie
+//val partie = Partie(1,joueur,route1)
+Partie(1, joueur, route1).choisirStarter()
 }
