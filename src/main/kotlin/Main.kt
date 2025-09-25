@@ -261,11 +261,13 @@ fun main() {
 //monstre5.afficherDetail(monstre5)
 //monstre6.afficherDetail(monstre6)
 
-////class MonsterKube
+////Class MonsterKube
 //println(monsterKube1.utiliser(monstre3))
 
 ////Class CombatMonstre
 //joueur.equipeMonstre.add(monstre1)
 //println(combat3.jouer())
 
+////class Zone
+route1.genereMonstre()
 }

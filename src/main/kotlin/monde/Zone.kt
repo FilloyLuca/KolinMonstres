@@ -1,6 +1,11 @@
 package org.example.monde
+import org.example.jeu.CombatMonstre
+import org.example.joueur
+import kotlin.random.Random
+
 
 import org.example.monstre.EspeceMonstre
+import org.example.monstre.IndividuMonstre
 
 /**
  * Représente une zone du monde dans laquelle le joueur peut se déplacer et rencontrer des monstres.
@@ -26,9 +31,56 @@ class Zone(
     var zoneSuivante : Zone? = null,
     var zonePrecedente : Zone? = null
 ) {
-    fun genereMonstre(){
+    /**
+     * Génère un individu monstre appartenant à une espèce choisie aléatoirement parmi celles disponibles dans la zone.
+     * L'expérience du monstre est calculée comme l'expérience de la zone ajustée de ±20%.
+     *
+     * @return Un nouvel IndividuMonstre sauvage, sans entraîneur, avec un id à 0 et le nom de son espèce.
+     * @throws IllegalArgumentException si la liste des espèces de monstres est vide.
+     */
+    fun genereMonstre(): IndividuMonstre{
+        require(especeMonstres.isNotEmpty()) { "Aucune espèce disponible dans cette zone." }
+        // Choisir une espèce au hasard
+        val especeAleatoire : EspeceMonstre = especeMonstres.random()
 
+        // Générer une variation de +/- 20%
+        val variation : Double = Random.nextDouble(0.8, 1.2)
+        val experienceMonstre : Double = expZone * variation
+
+        // Retourner le monstre généré (monstre sauvage sans entraineur, id 0 et nom de l'espèce par défaut)
+        return IndividuMonstre(
+            id = 0,
+            nom = especeAleatoire.nom,
+            espece = especeAleatoire,
+            entraineur = null,
+            expInit = experienceMonstre
+        )
     }
-    //TODO faire la méthode rencontreMonstre()
+
+    /**
+     * Gère la rencontre avec un monstre sauvage.
+     *
+     * Cette méthode génère un monstre sauvage et cherche le premier monstre vivant dans l'équipe du joueur.
+     * Si aucun monstre n'est disponible pour combattre, elle affiche un message d'erreur.
+     * Sinon, elle lance un combat entre le premier monstre du joueur et le monstre sauvage généré.
+     */
+    fun rencontreMonstre(){
+        genereMonstre()
+        val monstreSauvage = genereMonstre()
+        val premierMonstre: IndividuMonstre? = null
+
+        for (monstre in joueur.equipeMonstre){
+            if (monstre.pv > 0) {
+                val premierMonstre = monstre
+                break
+            }
+        }
+        if (premierMonstre == null) {
+            println("Aucun monstre disponible pour combattre !")
+            return
+        }
+
+        CombatMonstre(premierMonstre,monstreSauvage)
+    }
 
 }
