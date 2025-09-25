@@ -77,7 +77,7 @@ class Partie(
         }
 
         // 2) Affichage de l'équipe (index 1..n)
-        println("\nÉquipe actuelle :")
+        println("\n========== Équipe ==========")
         equipe.forEachIndexed { index, m ->
             println("${index + 1}. ${m.nom} (PV ${m.pv}/${m.pvMax})")
         }
@@ -106,9 +106,53 @@ class Partie(
         equipe[toIndex] = tmp
 
         // 5) Afficher le nouvel ordre
-        println("\nNouvel ordre de l'équipe :")
+        println("\n========== Équipe ==========")
         equipe.forEachIndexed { index, m ->
             println("${index + 1}. ${m.nom} (PV ${m.pv}/${m.pvMax})")
+        }
+    }
+
+    fun examineEquipe() {
+        val equipe = joueur.equipeMonstre
+        if (equipe.isEmpty()) {
+            println("Votre équipe est vide.")
+            return
+        }
+        loop@ while (true) {
+            println("========== Équipe ==========")
+            equipe.forEachIndexed { index, m ->
+                println("${index + 1}. ${m.nom} (Nv ${m.niveau}) PV ${m.pv}/${m.pvMax}")
+            }
+            println("========================================")
+            println("Tapez un numéro pour voir le détail du monstre.")
+            println("Tapez 'm' pour modifier l'ordre des monstres.")
+            println("Tapez 'q' pour revenir au menu principal.")
+            println("> ")
+
+            val saisie = readLine()?.trim().orEmpty()
+
+            when {
+                saisie.equals("q", ignoreCase = true) -> {
+                    println("Retour au menu principal.")
+                    return
+                }
+                saisie.equals("m", ignoreCase = true) -> {
+                    modifierOrdreEquipe()
+                    // Après modification, on ré-affiche le menu
+                }
+                else -> {
+                    val index = saisie.toIntOrNull()
+                    if (index == null || index !in 1..equipe.size) {
+                        println("Entrée invalide. Veuillez saisir un numéro valide, 'm' ou 'q'.")
+                        continue@loop
+                    }
+                    val monstre = equipe[index - 1]
+                    // Affiche toutes les caractéristiques + art
+                    monstre.afficherDetail(monstre)
+                    println("\nAppuyez sur Entrée pour revenir à la liste...")
+                    readLine()
+                }
+            }
         }
     }
 
