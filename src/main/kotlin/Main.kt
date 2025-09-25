@@ -170,7 +170,6 @@ val monstre1 = IndividuMonstre(
     null,
     1500.0
 )
-
 val monstre2 = IndividuMonstre(
     2,
     "flamkip",
@@ -178,11 +177,31 @@ val monstre2 = IndividuMonstre(
     null,
     1500.0
 )
-
 val monstre3 = IndividuMonstre(
     3,
     "aquamy",
     especeAquamy,
+    null,
+    1500.0
+)
+val monstre4 = IndividuMonstre(
+    8,
+    "Laoumi",
+    especeLaoumi,
+    null,
+    1500.0
+)
+val monstre5 = IndividuMonstre(
+    10,
+    "Bugsyface",
+    especeBugsyface,
+    null,
+    1500.0
+)
+val monstre6 = IndividuMonstre(
+    13,
+    "Galum",
+    especeGalum,
     null,
     1500.0
 )
@@ -238,12 +257,15 @@ fun main() {
 //monstre1.afficherDetail(monstre1)
 //monstre2.afficherDetail(monstre2)
 //monstre3.afficherDetail(monstre3)
+//monstre4.afficherDetail(monstre4)
+//monstre5.afficherDetail(monstre5)
+//monstre6.afficherDetail(monstre6)
 
 ////class MonsterKube
 //println(monsterKube1.utiliser(monstre3))
 
 ////Class CombatMonstre
-joueur.equipeMonstre.add(monstre1)
-println(combat3.jouer())
+//joueur.equipeMonstre.add(monstre1)
+//println(combat3.jouer())
 
 }
