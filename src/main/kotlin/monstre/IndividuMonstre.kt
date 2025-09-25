@@ -28,6 +28,11 @@ import kotlin.random.Random
  *
  * @see EspeceMonstre Pour les caractéristiques de l'espèce.
  * @see Entraineur Pour le propriétaire potentiel de ce monstre.
+ * @see palierExp Pour calculer l'expérience totale nécessaire pour atteindre un niveau donné.
+ * @see levelUp
+ * @see attaquer
+ * @see renommer
+ * @see afficherDetail
  */
 class IndividuMonstre (
     var id : Int,

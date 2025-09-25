@@ -22,6 +22,8 @@ import org.example.monstre.IndividuMonstre
  * @property zonePrecedente Référence vers la zone précédente (ou null si aucune).
  *
  * @see EspeceMonstre pour les espèces de monstres référencées.
+ * @see genereMonstre pour génerer un monstre sauvage dans cette zone.
+ * @see rencontreMonstre pour génerer un monstre sauvage et lancer un combat avec celui-ci.
  */
 class Zone(
     var id : Int,
