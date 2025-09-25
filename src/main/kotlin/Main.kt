@@ -192,10 +192,31 @@ val monstre6 = IndividuMonstre(
 
 val monsterKube1 = MonsterKube(1,"Kube","Kube de monstre",0.5)
 
+fun nouvellePartie(): Partie {
+    println("Bienvenue dans le monde des Monstres !")
+    println("Comment t'appelles-tu ?")
+    print("> ")
+
+    val saisie = readLine()?.trim().orEmpty()
+    if (saisie.isNotEmpty()) {
+        joueur.nom = saisie
+    } else {
+        println("Aucun nom saisi, le nom du joueur reste: ${joueur.nom}")
+    }
+
+    println("Enchanté, ${joueur.nom} ! Bonne aventure.")
+    return Partie(idPartie, joueur, zoneDepart)
+}
+
 
 fun main() {
+route1.zoneSuivante = route2
+route2.zonePrecedente = route1
+joueur.sacAItems.add(monsterKube1)
 
-Partie(1,joueur,route1).choisirStarter()
-Partie(1,joueur,route1).jouer()
+
+val partie = nouvellePartie()
+partie.choixStarter()
+partie.jouer()
 
 }
