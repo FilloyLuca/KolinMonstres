@@ -19,7 +19,7 @@ import org.example.monstre3
 class Partie(
     val id : Int,
     val joueur : Entraineur,
-    val zone : Zone
+    var zone : Zone
 ) {
     /**
      * Permet au joueur de choisir un monstre starter parmi trois générés aléatoirement.
@@ -112,6 +112,15 @@ class Partie(
         }
     }
 
+    /**
+     * Permet au joueur d'examiner son équipe de monstres.
+     *
+     * Affiche la liste des monstres avec leur niveau et points de vie.
+     * Propose un menu interactif pour :
+     * - Voir le détail d'un monstre en entrant son numéro
+     * - Modifier l'ordre des monstres en entrant 'm'
+     * - Revenir au menu principal en entrant 'q'
+     */
     fun examineEquipe() {
         val equipe = joueur.equipeMonstre
         if (equipe.isEmpty()) {
@@ -155,5 +164,63 @@ class Partie(
             }
         }
     }
+
+    /**
+     * Boucle principale du jeu.
+     *
+     * Affiche un menu avec plusieurs actions possibles pour le joueur dans la zone actuelle.
+     * Le joueur peut :
+     * 1. Rencontrer un monstre sauvage dans la zone
+     * 2. Examiner son équipe
+     * 3. Se déplacer vers la zone suivante (si disponible)
+     * 4. Se déplacer vers la zone précédente (si disponible)
+     * 0. Quitter le jeu
+     */
+    fun jouer() {
+        while (true) {
+            println("========================================")
+            println("Vous êtes dans la zone: ${zone.nom}")
+            println("Actions:")
+            println("1. Rencontrer un monstre sauvage")
+            println("2. Equipe")
+            println("3. Zone suivante")
+            println("4. Zone précédente")
+            println("0. Quitter")
+            print("> ")
+
+            when (readLine()?.trim()) {
+                "1" -> {
+                    zone.rencontreMonstre()
+                }
+                "2" -> {
+                    examineEquipe()
+                }
+                "3" -> {
+                    val suivante = zone.zoneSuivante
+                    if (suivante != null) {
+                        zone = suivante
+                        println("Vous vous déplacez vers: ${zone.nom}")
+                    } else {
+                        println("Il n'y a pas de zone suivante.")
+                    }
+                }
+                "4" -> {
+                    val precedente = zone.zonePrecedente
+                    if (precedente != null) {
+                        zone = precedente
+                        println("Vous revenez à: ${zone.nom}")
+                    } else {
+                        println("Il n'y a pas de zone précédente.")
+                    }
+                }
+                "0" -> {
+                    println("Fin du jeu.")
+                    return
+                }
+                else -> println("Choix invalide.")
+            }
+        }
+    }
+
 
 }

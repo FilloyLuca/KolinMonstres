@@ -10,25 +10,8 @@ import org.example.monstre.EspeceMonstre
 import org.example.monstre.IndividuMonstre
 import kotlin.math.E
 
-fun changeCouleur(message: String, couleur:String=""): String {
-    val reset = "\u001B[0m"
-    val codeCouleur = when (couleur.lowercase()) {
-        "rouge" -> "\u001B[31m"
-        "vert" -> "\u001B[32m"
-        "jaune" -> "\u001B[33m"
-        "bleu" -> "\u001B[34m"
-        "magenta" -> "\u001B[35m"
-        "cyan" -> "\u001B[36m"
-        "blanc" -> "\u001B[37m"
-        "marron" -> "\u001B[38;5;94m"
-        else -> "" // pas de couleur si non reconnu
-    }
-    return "$codeCouleur$message$reset"
-}
-
 var joueur = Entraineur(1,"Sacha",100)
 var rival = Entraineur(2,"Regis",200)
-var championTypePierre= Entraineur(3,"Pierre",1000)
 
 var especeSpringLeaf = EspeceMonstre(
     1,
@@ -207,75 +190,12 @@ val monstre6 = IndividuMonstre(
     1500.0
 )
 
-val badgePiere = Badge(1,
-    "Badge Roche",
-    "Badge obtenu apres avoir battu le champion de l'arène  de type roche",
-    championTypePierre
-)
-
 val monsterKube1 = MonsterKube(1,"Kube","Kube de monstre",0.5)
 
-var combat1 = CombatMonstre(monstre3,monstre2)
-var combat2 = CombatMonstre(monstre2,monstre1)
-var combat3 = CombatMonstre(monstre1,monstre3)
 
 fun main() {
-//// Test fonctionnel
-//    println(changeCouleur("Hello","rouge"))
-//    println(changeCouleur("world","bleu"))
-//    println("hello ${changeCouleur("my","jaune")} world")
-//    println(changeCouleur("truc","marron"))
 
-////Class Entraineur
-//    joueur.afficheDetail()
-//    rival.afficheDetail()
-//    joueur.argents+=50
-//    joueur.afficheDetail()
-
-////Class EspeceMonstre
-//    println(especeSpringLeaf.afficheArt(true))
-//    println(especeSpringLeaf.afficheArt(false))
-//    println(especeFlamkip.afficheArt(true))
-//    println(especeFlamkip.afficheArt(false))
-//    println(especeAquamy.afficheArt(true))
-//    println(especeAquamy.afficheArt(false))
-
-////Class Zone
-//    route1.zoneSuivante = route2
-//    route2.zonePrecedente = route1
-
-////Class IndividuMonstre
-//// Test levelup()
-//monstre1.levelUp()
-
-////Test attaquer()
-//monstre1.attaquer(monstre2)
-//
-////Test renommer()
-//monstre1.renommer(monstre1)
-
-////Test afficherDetail()
-//monstre1.afficherDetail(monstre1)
-//monstre2.afficherDetail(monstre2)
-//monstre3.afficherDetail(monstre3)
-//monstre4.afficherDetail(monstre4)
-//monstre5.afficherDetail(monstre5)
-//monstre6.afficherDetail(monstre6)
-
-////Class MonsterKube
-//println(monsterKube1.utiliser(monstre3))
-
-////Class CombatMonstre
-//joueur.equipeMonstre.add(monstre1)
-//println(combat3.jouer())
-
-////class Zone
-//route1.genereMonstre()
-
-////Class Partie
-//val partie = Partie(1,joueur,route1)
-joueur.equipeMonstre.add(monstre5)
-joueur.equipeMonstre.add(monstre6)
-Partie(1,joueur,route1).examineEquipe()
+Partie(1,joueur,route1).choisirStarter()
+Partie(1,joueur,route1).jouer()
 
 }
