@@ -77,7 +77,7 @@ class Partie(
         }
 
         // 2) Affichage de l'équipe (index 1..n)
-        println("Équipe actuelle :")
+        println("\nÉquipe actuelle :")
         equipe.forEachIndexed { index, m ->
             println("${index + 1}. ${m.nom} (PV ${m.pv}/${m.pvMax})")
         }
@@ -92,7 +92,7 @@ class Partie(
             }
         }
 
-        val fromIndex = lirePosition("Position du monstre à déplacer : ")
+        val fromIndex = lirePosition("\nPosition du monstre à déplacer : ")
         val toIndex = lirePosition("Nouvelle position : ")
 
         if (fromIndex == toIndex) {
@@ -100,13 +100,13 @@ class Partie(
             return
         }
 
-        // 4) Échange manuel (sans java.util.*)
+        // 4) Échange
         val tmp = equipe[fromIndex]
         equipe[fromIndex] = equipe[toIndex]
         equipe[toIndex] = tmp
 
         // 5) Afficher le nouvel ordre
-        println("Nouvel ordre de l'équipe :")
+        println("\nNouvel ordre de l'équipe :")
         equipe.forEachIndexed { index, m ->
             println("${index + 1}. ${m.nom} (PV ${m.pv}/${m.pvMax})")
         }
